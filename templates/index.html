@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video ve Müzik İndirme Platformu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Video & Müzik Converter</h1>
+        
+        <div class="form-container">
+            <div class="form-section">
+                <h2>Video İndir</h2>
+                <form action="/download" method="POST">
+                    <input type="text" name="url" placeholder="Video URL'sini yapıştırın" required>
+                    <select name="quality">
+                        <option value="2160">4K (2160p)</option>
+                        <option value="1440">2K (1440p)</option>
+                        <option value="1080" selected>Full HD (1080p)</option>
+                        <option value="720">HD (720p)</option>
+                        <option value="480">SD (480p)</option>
+                        <option value="360">Düşük (360p)</option>
+                    </select>
+                    <button type="submit">Video İndir</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h2>Müzik İndir</h2>
+                <form action="/download_music" method="POST">
+                    <input type="text" name="url" placeholder="Video URL'sini yapıştırın" required>
+                    <select name="format">
+                        <option value="mp3" selected>MP3 (Ses)</option>
+                        <option value="m4a">M4A (Yüksek Kalite Ses)</option>
+                    </select>
+                    <button type="submit">Müzik İndir</button>
+                </form>
+            </div>
+        </div>
+
+        {% if message %}
+        <div class="message">
+            {{ message }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html> 
